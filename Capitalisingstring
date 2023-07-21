@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <conio.h>
+#define MAX_SIZE 100 // Maximum string size
+
+int main()
+{
+    char prevChar;
+    int i, words;
+
+    char str[MAX_SIZE];
+    clrscr(); // Clear screen
+
+    // Input string from user
+    printf("Enter any string: ");
+    gets(str);
+
+    i = 0;
+    words = 0;
+    prevChar = '\0'; // The previous character of str[0] is null
+
+    // Capitalize first character of words
+    while (str[i] != '\0')
+    {
+        // Check first character is lowercase alphabet
+        if (i == 0 && str[i] >= 'a' && str[i] <= 'z')
+        {
+            str[i] = str[i] - 32; // Subtract 32 to make it capital
+        }
+        // Check space
+        else if (str[i] == ' ')
+        {
+            // If space is found, check next character
+            ++i;
+            // Check next character is lowercase alphabet
+            if (str[i] >= 'a' && str[i] <= 'z')
+            {
+                str[i] = str[i] - 32; // Subtract 32 to make it capital
+            }
+            continue; // Continue to the loop
+        }
+        else
+        {
+            // All other uppercase characters should be in lowercase
+            if (str[i] >= 'A' && str[i] <= 'Z')
+            {
+                str[i] = str[i] + 32; // Add 32 to make it lowercase
+            }
+        }
+
+        ++i;
+    }
+
+    printf("Capitalize string is: %s\n", str);
+    getch();
+    return 0;
+}
