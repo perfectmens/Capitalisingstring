@@ -1,0 +1,42 @@
+#include <stdio.h>
+
+struct emp {
+    int empno;
+    char name[10];
+    int bpay;
+    int allow;
+    int ded;
+    int npay;
+};
+
+int main() {
+    int i, n;
+    
+    printf("Enter the number of employees: ");
+    scanf("%d", &n);
+    
+    struct emp e[10]; // Create an array of struct emp to store employee data (max 10 employees).
+    
+    for (i = 0; i < n; i++) {
+        printf("Enter the employee number: ");
+        scanf("%d", &e[i].empno);
+        
+        printf("Enter the name: ");
+        scanf("%s", e[i].name);
+        
+        printf("Enter the basic pay, allowances & deductions: ");
+        scanf("%d %d %d", &e[i].bpay, &e[i].allow, &e[i].ded);
+        
+        // Calculate the net pay for the current employee.
+        e[i].npay = e[i].bpay + e[i].allow - e[i].ded;
+    }
+    
+    // Print the employee details.
+    printf("\nEmp. No. \tName \tBpay \tAllow \tDed \tNpay\n");
+    for (i = 0; i < n; i++) {
+        printf("%d \t%s \t%d \t%d \t%d \t%d\n",
+               e[i].empno, e[i].name, e[i].bpay, e[i].allow, e[i].ded, e[i].npay);
+    }
+    
+    return 0;
+}
